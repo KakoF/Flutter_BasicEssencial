@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro/widgets/component_button.dart';
 
 class HelloPage3 extends StatelessWidget {
   @override
@@ -8,11 +9,7 @@ class HelloPage3 extends StatelessWidget {
         title: Text('Page 3'),
       ),
       body: Center(
-        child: RaisedButton(
-            color: Colors.red,
-            child: Text('Voltar', style: TextStyle(color: Colors.white)),
-            onPressed: () => _onClickVoltar(context)
-        ),
+        child: ComponentButton('Voltar', onPressed: () => _onClickVoltar(context),color: Colors.green)
       ),
     );
   }

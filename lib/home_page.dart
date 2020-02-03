@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:primeiro/pages/hello_page1.dart';
 import 'package:primeiro/pages/hello_page2.dart';
 import 'package:primeiro/pages/hello_page3.dart';
+import 'package:primeiro/widgets/component_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -41,17 +42,17 @@ class HomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    _button(context,'ListView', () => _onClickNavigator(context, HelloPage1())),
-                    _button(context,'Page 2',() => _onClickNavigator(context, HelloPage2())),
-                    _button(context,'Page 3', () => _onClickNavigator(context, HelloPage3())),
+                    ComponentButton('ListView', onPressed: () => _onClickNavigator(context, HelloPage1())),
+                    ComponentButton('Page 2', onPressed: () => _onClickNavigator(context, HelloPage2())),
+                    ComponentButton('Page 3', onPressed: () => _onClickNavigator(context, HelloPage3())),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    _button(context,'Snack',_onClickSnack),
-                    _button(context,'Dialog',_onClickDialog),
-                    _button(context,'Touch',_onClickTouch),
+                    ComponentButton('Snack',onPressed: _onClickSnack),
+                    ComponentButton('Dialog',onPressed: _onClickDialog),
+                    ComponentButton('Touch',onPressed: _onClickTouch),
                   ],
                 )
               ],
@@ -98,15 +99,6 @@ class HomePage extends StatelessWidget {
     return
       Image.asset(caminho);
   }
-
-  _button(BuildContext context, String textButton, Function onPressed){
-    return RaisedButton(
-      color: Colors.green,
-      child: Text(textButton, style: TextStyle(color: Colors.white),),
-      onPressed:  onPressed
-    );
-  }
-
   _carrossel() {
     return Container(
       height: 300,
