@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:primeiro/pages/hello_expanded.dart';
+import 'package:primeiro/pages/hello_gridview.dart';
 import 'package:primeiro/pages/hello_listview.dart';
 import 'package:primeiro/pages/hello_page1.dart';
 import 'package:primeiro/pages/hello_page2.dart';
@@ -46,6 +47,7 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     ComponentButton('ListView', onPressed: () => _onClickNavigator(context, HelloListView())),
+                    ComponentButton('GridView', onPressed: () => _onClickNavigator(context, HelloGridView())),
                     ComponentButton('Page 2', onPressed: () => _onClickNavigator(context, HelloPage2())),
                     ComponentButton('Page 3', onPressed: () => _onClickNavigator(context, HelloPage3())),
                   ],
