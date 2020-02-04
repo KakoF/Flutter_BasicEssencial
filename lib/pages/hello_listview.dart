@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:primeiro/pages/tecnologia_page.dart';
+import 'package:primeiro/utils/nav.dart';
 
 
 class Tecnologia {
@@ -67,25 +69,30 @@ class _HelloListViewState extends State<HelloListView> {
    }
   }
 
-  Stack _itemView(List<Tecnologia> tecs, int index) {
+  _itemView(List<Tecnologia> tecs, int index) {
     Tecnologia tec = tecs[index];
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-       _img(tec.foto),
-        Container(
-            alignment: Alignment.topLeft,
-            child: Container(
-              margin: EdgeInsets.all(12),
-                padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.black45,
-                borderRadius: BorderRadius.circular(16),
-              ),
-                child: Text(tec.nome, style: TextStyle(fontSize: 26, color: Colors.white))
-            )
-        )
-      ],
+     return GestureDetector(
+       onTap: (){
+         push(context, TecnologiaPage(tec));
+       },
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+         _img(tec.foto),
+          Container(
+              alignment: Alignment.topLeft,
+              child: Container(
+                margin: EdgeInsets.all(12),
+                  padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                  child: Text(tec.nome, style: TextStyle(fontSize: 26, color: Colors.white))
+              )
+          )
+        ],
+      ),
     );
   }
 
