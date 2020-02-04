@@ -1,9 +1,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:primeiro/pages/hello_listview.dart';
 import 'package:primeiro/pages/hello_page1.dart';
 import 'package:primeiro/pages/hello_page2.dart';
 import 'package:primeiro/pages/hello_page3.dart';
+import 'package:primeiro/utils/nav.dart';
 import 'package:primeiro/widgets/component_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    ComponentButton('ListView', onPressed: () => _onClickNavigator(context, HelloPage1())),
+                    ComponentButton('ListView', onPressed: () => _onClickNavigator(context, HelloListView())),
                     ComponentButton('Page 2', onPressed: () => _onClickNavigator(context, HelloPage2())),
                     ComponentButton('Page 3', onPressed: () => _onClickNavigator(context, HelloPage3())),
                   ],
@@ -62,9 +64,7 @@ class HomePage extends StatelessWidget {
 
 
   void _onClickNavigator(context, Widget page) async {
-    String retorno = await Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-      return page;
-    }));
+    String retorno = await push(context, page);
     print('>> $retorno');
   }
 
