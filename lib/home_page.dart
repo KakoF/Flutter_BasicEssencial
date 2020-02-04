@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:primeiro/pages/hello_expanded.dart';
 import 'package:primeiro/pages/hello_listview.dart';
 import 'package:primeiro/pages/hello_page1.dart';
 import 'package:primeiro/pages/hello_page2.dart';
@@ -55,6 +56,7 @@ class HomePage extends StatelessWidget {
                     ComponentButton('Snack',onPressed: _onClickSnack),
                     ComponentButton('Dialog',onPressed: _onClickDialog),
                     ComponentButton('Touch',onPressed: _onClickTouch),
+                    ComponentButton('Expanded',onPressed: () => _onClickNavigator(context, HelloExpanded())),
                   ],
                 )
               ],
