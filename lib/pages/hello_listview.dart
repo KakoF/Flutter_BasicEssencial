@@ -10,11 +10,22 @@ class Tecnologia {
 }
 
 class HelloListView extends StatelessWidget {
+
+  bool gridView = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Itens'),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.list),onPressed: (){
+            this.gridView = false;
+          }),
+          IconButton(icon: Icon(Icons.grid_on),onPressed: (){
+            this.gridView = true;
+          })
+        ],
       ),
       body: _body(),
     );
