@@ -22,10 +22,10 @@ class HelloListView extends StatelessWidget {
 
   _body() {
     List<Tecnologia> tecs = [
-      Tecnologia('Cachorro1', 'assets/images/mongo.png'),
-      Tecnologia('Cachorro2','assets/images/adonis.png'),
-      Tecnologia('Cachorro3','assets/images/expresss.jpg'),
-      Tecnologia('Cachorro4','assets/images/javascript.png'),
+      Tecnologia('Tecnologia 1', 'assets/images/mongo.png'),
+      Tecnologia('Tecnologia 2','assets/images/adonis.png'),
+      Tecnologia('Tecnologia 3','assets/images/expresss.jpg'),
+      Tecnologia('Tecnologia 4','assets/images/javascript.png'),
     ];
 
     return ListView.builder(
@@ -33,7 +33,24 @@ class HelloListView extends StatelessWidget {
           itemExtent: 300,
           itemBuilder: (context, index){
             Tecnologia tec = tecs[index];
-            return _img(tec.foto);
+            return Stack(
+              fit: StackFit.expand,
+              children: <Widget>[
+               _img(tec.foto),
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      margin: EdgeInsets.all(12),
+                        padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.black45,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                        child: Text(tec.nome, style: TextStyle(fontSize: 26, color: Colors.white))
+                    )
+                )
+              ],
+            );
       });
   }
 
