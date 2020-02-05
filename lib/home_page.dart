@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 _text(),
                 _carrossel(),
-                _buttons(context),
+                _buttons(),
                 _text(),
                 _carrossel(),
               ],
@@ -40,29 +40,31 @@ class HomePage extends StatelessWidget {
    );
   }
 
-  _buttons(context) {
-    return Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    ComponentButton('ListView', onPressed: () => _onClickNavigator(context, HelloListView())),
-                    ComponentButton('GridView', onPressed: () => _onClickNavigator(context, HelloGridView())),
-                    ComponentButton('Page 2', onPressed: () => _onClickNavigator(context, HelloPage2())),
-                    ComponentButton('Page 3', onPressed: () => _onClickNavigator(context, HelloPage3())),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    ComponentButton('Snack',onPressed: _onClickSnack),
-                    ComponentButton('Dialog',onPressed: _onClickDialog),
-                    ComponentButton('Touch',onPressed: _onClickTouch),
-                    ComponentButton('Expanded',onPressed: () => _onClickNavigator(context, HelloExpanded())),
-                  ],
-                )
-              ],
-            );
+  _buttons() {
+    return Builder(builder: (BuildContext context) {
+      return Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ComponentButton('ListView', onPressed: () => _onClickNavigator(context, HelloListView())),
+              ComponentButton('GridView', onPressed: () => _onClickNavigator(context, HelloGridView())),
+              ComponentButton('Page 2', onPressed: () => _onClickNavigator(context, HelloPage2())),
+              ComponentButton('Page 3', onPressed: () => _onClickNavigator(context, HelloPage3())),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ComponentButton('Snack',onPressed: () => _onClickSnack(context)),
+              ComponentButton('Dialog',onPressed: () =>  _onClickDialog(context)),
+              ComponentButton('Touch',onPressed: _onClickTouch),
+              ComponentButton('Expanded',onPressed: () => _onClickNavigator(context, HelloExpanded())),
+            ],
+          )
+        ],
+      );
+    });
   }
 
 
@@ -77,12 +79,42 @@ class HomePage extends StatelessWidget {
     print('asda');
   }
 
-  _onClickDialog() {
-    print('asda');
+  _onClickDialog(BuildContext context) {
+    showDialog(context: context,barrierDismissible: false,  builder: (context){
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          title: Text('Dialog Flutter'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancelar'),
+              onPressed: (){
+                Navigator.pop(context);
+              },
+            ),
+            FlatButton(
+              child: Text('Confirmar'),
+              onPressed: (){
+                Navigator.pop(context);
+                print('OK');
+              },
+            )
+          ],
+        ),
+      );
+    });
   }
 
-  _onClickSnack() {
-    print('asda');
+  _onClickSnack(context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text('SnackBar'),
+      action: SnackBarAction(
+        textColor: Colors.red,
+        label: 'OK',
+        onPressed: (){
+        print('SnackBar');
+      },),
+    ));
   }
 
   _text() {
