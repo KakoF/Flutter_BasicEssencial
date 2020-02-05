@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-          drawer: DrawerList(
+        drawer: DrawerList(
 
         ),
       ),
@@ -68,22 +68,22 @@ class HomePage extends StatelessWidget {
   }
 
   _body(context) {
-   return SingleChildScrollView(
-     child: Container(
-       padding: EdgeInsets.only(top: 16),
+    return SingleChildScrollView(
+      child: Container(
+          padding: EdgeInsets.only(top: 16),
           color: Colors.grey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                _text(),
-                _carrossel(),
-                _buttons(),
-                _text(),
-                _carrossel(),
-              ],
-            )
-          ),
-   );
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              _text(),
+              _carrossel(),
+              _buttons(),
+              _text(),
+              _carrossel(),
+            ],
+          )
+      ),
+    );
   }
 
   _buttons() {
@@ -167,8 +167,8 @@ class HomePage extends StatelessWidget {
         textColor: Colors.red,
         label: 'OK',
         onPressed: (){
-        print('SnackBar');
-      },),
+          print('SnackBar');
+        },),
     ));
   }
 
