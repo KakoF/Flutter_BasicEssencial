@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:primeiro/drawer_list.dart';
 import 'package:primeiro/pages/hello_expanded.dart';
 import 'package:primeiro/pages/hello_gridview.dart';
 import 'package:primeiro/pages/hello_listview.dart';
@@ -13,21 +14,66 @@ import 'package:primeiro/widgets/component_button.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Hello Flutter'),
-        centerTitle: true,
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Hello Flutter'),
+          centerTitle: true,
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Tab 1'),
+              Tab(text: 'Tab 2'),
+              Tab(text: 'Tab 3')
+            ],
+          ),
+        ),
+        body:  TabBarView(
+          children: [
+            _body(context),
+            Container(
+              color: Colors.green,
+            ),
+            Container(
+              color: Colors.orange,
+            )
+
+          ],
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                _onClickFab();
+              },
+            ),
+            SizedBox(
+              width: 8,
+            ),
+            FloatingActionButton(
+              child: Icon(Icons.favorite),
+              onPressed: () {
+                _onClickFab();
+              },
+            ),
+          ],
+        ),
+          drawer: DrawerList(
+
+        ),
       ),
-      body: _body(context)
     );
   }
 
   _body(context) {
    return SingleChildScrollView(
      child: Container(
+       padding: EdgeInsets.only(top: 16),
           color: Colors.grey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 _text(),
                 _carrossel(),
@@ -157,5 +203,9 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _onClickFab() {
+    print('Adicionar');
   }
 }
