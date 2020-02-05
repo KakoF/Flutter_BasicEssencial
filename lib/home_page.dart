@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:primeiro/pages/hello_expanded.dart';
 import 'package:primeiro/pages/hello_gridview.dart';
 import 'package:primeiro/pages/hello_listview.dart';
-import 'package:primeiro/pages/hello_page1.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:primeiro/pages/hello_page2.dart';
 import 'package:primeiro/pages/hello_page3.dart';
 import 'package:primeiro/utils/nav.dart';
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               ComponentButton('Snack',onPressed: () => _onClickSnack(context)),
               ComponentButton('Dialog',onPressed: () =>  _onClickDialog(context)),
-              ComponentButton('Touch',onPressed: _onClickTouch),
+              ComponentButton('Tosty',onPressed: () => _onClickToasty()),
               ComponentButton('Expanded',onPressed: () => _onClickNavigator(context, HelloExpanded())),
             ],
           )
@@ -75,8 +75,17 @@ class HomePage extends StatelessWidget {
   }
 
 
-  _onClickTouch() {
-    print('asda');
+  _onClickToasty() {
+    print('asdas');
+    Fluttertoast.showToast(
+        msg: "Toast Alert",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 5,
+        backgroundColor: Colors.black45,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
   }
 
   _onClickDialog(BuildContext context) {
